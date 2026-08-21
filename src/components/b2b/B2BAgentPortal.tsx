@@ -2,27 +2,18 @@ import React, { useState } from 'react';
 import {
   Handshake,
   Wallet,
-  Building,
-  DollarSign,
-  Plus,
-  Percent,
   FileText,
-  Send,
-  Users,
-  ShieldCheck,
-  CheckCircle2,
   Printer,
   X,
   Sparkles,
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
-import type { SubAgent } from '../../types';
 import { formatINR } from '../../utils/currency';
 
 export const B2BAgentPortal: React.FC = () => {
   const { subAgents, updateSubAgentWallet, setUseMockData } = useErp();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const [selectedAgentId, setSelectedAgentId] = useState<string>(subAgents[0]?.id || '');
   const [topUpAmount, setTopUpAmount] = useState('100000');

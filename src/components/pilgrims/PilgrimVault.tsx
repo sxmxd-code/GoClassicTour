@@ -19,7 +19,6 @@ import { getWhatsAppClickUrl } from '../../utils/whatsapp';
 
 export const PilgrimVault: React.FC = () => {
   const { pilgrims, roomAllocations, deletePilgrim, addPilgrim, packages, selectedBatchId, setUseMockData } = useErp();
-  const { t } = useLanguage();
 
   const [showScanner, setShowScanner] = useState(false);
   const [showManualModal, setShowManualModal] = useState(false);
@@ -507,6 +506,67 @@ export const PilgrimVault: React.FC = () => {
                     <option value="AB+">AB+</option>
                   </select>
                 </div>
+              </div>
+
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Contact Mobile Number *</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="+91 98200 00000"
+                  value={contactNumber}
+                  onChange={(e) => setContactNumber(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-300 rounded-md px-3 py-1.5 text-slate-900 font-mono focus:outline-none focus:border-[#03578F]"
+                />
+              </div>
+
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-md space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-bold text-slate-900 text-xs">Is Mahram Head (Family Leader)?</span>
+                  <input
+                    type="checkbox"
+                    checked={isMahramHead}
+                    onChange={(e) => setIsMahramHead(e.target.checked)}
+                    className="w-4 h-4 text-[#03578F] rounded cursor-pointer"
+                  />
+                </div>
+
+                {!isMahramHead && (
+                  <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-200">
+                    <div>
+                      <label className="block text-[10px] font-semibold text-slate-600 mb-1">Mahram Leader</label>
+                      <select
+                        value={mahramId}
+                        onChange={(e) => setMahramId(e.target.value)}
+                        className="w-full bg-white border border-slate-300 rounded-md px-2 py-1 text-slate-900 text-xs focus:outline-none"
+                      >
+                        <option value="">Select Mahram Head</option>
+                        {mahramHeads.map((h) => (
+                          <option key={h.id} value={h.id}>
+                            {h.firstName} {h.lastName} ({h.passportNumber})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-semibold text-slate-600 mb-1">Relationship</label>
+                      <select
+                        value={relationship}
+                        onChange={(e) => setRelationship(e.target.value as RelationshipType)}
+                        className="w-full bg-white border border-slate-300 rounded-md px-2 py-1 text-slate-900 text-xs focus:outline-none"
+                      >
+                        <option value="wife">Wife</option>
+                        <option value="son">Son</option>
+                        <option value="daughter">Daughter</option>
+                        <option value="mother">Mother</option>
+                        <option value="father">Father</option>
+                        <option value="brother">Brother</option>
+                        <option value="sister">Sister</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="flex gap-2 justify-end pt-2">

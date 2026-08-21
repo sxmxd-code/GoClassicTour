@@ -4,19 +4,12 @@ import {
   Bus,
   Plane,
   QrCode,
-  Users,
   Bed,
-  Phone,
-  ShieldCheck,
   Download,
   Printer,
-  Sparkles,
   AlertTriangle,
   CheckCircle2,
   Plus,
-  Compass,
-  ArrowRight,
-  ExternalLink,
   PhoneCall,
   MapPin,
   X,
@@ -38,7 +31,6 @@ export const GroundOperationsHub: React.FC = () => {
     assignPilgrimToRoom,
     removePilgrimFromRoom,
     createRoom,
-    updateFlightManifest,
   } = useErp();
 
   const { t, language } = useLanguage();

@@ -9,14 +9,8 @@ import {
   Bus,
   ScanLine,
   TrendingUp,
-  Clock,
-  ArrowUpRight,
-  ShieldCheck,
   Compass,
-  QrCode,
   Send,
-  CheckCircle2,
-  AlertTriangle,
   Search,
   Plus,
   Sparkles,
@@ -25,12 +19,7 @@ import {
   BarChart3,
   Activity,
   HeartPulse,
-  UserCheck,
-  Bed,
-  MapPin,
   ChevronRight,
-  PhoneCall,
-  ExternalLink,
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -48,7 +37,6 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({ setActiveT
     bookings,
     packages,
     roomAllocations,
-    transports,
     transactions,
     selectedBatchId,
     setSelectedBatchId,
@@ -86,11 +74,10 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({ setActiveT
   const totalRevenueInr = scopedBookings.reduce((sum, b) => sum + b.totalAmountInr, 0);
   const totalCollectedInr = scopedBookings.reduce((sum, b) => sum + b.paidAmountInr, 0);
   const totalBalanceInr = totalRevenueInr - totalCollectedInr;
-  const collectionPercentage = totalRevenueInr > 0 ? Math.round((totalCollectedInr / totalRevenueInr) * 100) : 0;
 
   // SAR Supplier Disbursements
   const totalSarDisbursed = scopedTransactions
-    .filter(t => t.currency === 'SAR' && (t.transactionType === 'supplier_payment' || t.transactionType === 'hotel_disbursement'))
+    .filter(t => t.currency === 'SAR' && t.transactionType === 'supplier_payment')
     .reduce((sum, t) => sum + t.amount, 0);
 
   // Room Allocation Stats

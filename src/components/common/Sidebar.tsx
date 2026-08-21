@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   LayoutDashboard,
   Users,
@@ -11,7 +11,6 @@ import {
   MessageSquare,
   ShieldCheck,
   ChevronRight,
-  ChevronLeft,
   UserCheck,
   Sparkles,
   PanelLeftClose,

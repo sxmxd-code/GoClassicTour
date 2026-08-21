@@ -5,20 +5,9 @@ import {
   Search,
   Filter,
   Flame,
-  Phone,
-  Mail,
-  Calendar,
-  DollarSign,
   Send,
   CheckCircle,
-  Clock,
-  ArrowRight,
-  MoreVertical,
-  Layers,
-  Sparkles,
-  Building,
   X,
-  UserCheck,
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -27,8 +16,8 @@ import { formatINR } from '../../utils/currency';
 import { getWhatsAppClickUrl } from '../../utils/whatsapp';
 
 export const LeadPipeline: React.FC = () => {
-  const { leads, addLead, updateLeadStatus, updateLead, deleteLead, addBooking, packages } = useErp();
-  const { t, language } = useLanguage();
+  const { leads, addLead, updateLeadStatus, addBooking, packages } = useErp();
+  const { t } = useLanguage();
 
   const [viewMode, setViewMode] = useState<'kanban' | 'table'>('kanban');
   const [searchTerm, setSearchTerm] = useState('');
@@ -81,11 +70,11 @@ export const LeadPipeline: React.FC = () => {
       paxCount,
       budgetInr,
       assignedTo,
+      notes,
       status: 'new_inquiry',
-      leadScore: Math.floor(Math.random() * 25) + 75, // 75 - 100
+      leadScore: 85,
       lastContactedAt: new Date().toISOString().split('T')[0],
       followUpDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      notes,
     });
 
     setName('');
@@ -98,7 +87,7 @@ export const LeadPipeline: React.FC = () => {
   const handleExecuteConversion = () => {
     if (!convertingLead) return;
     const pkg = packages[0];
-    const newBooking = addBooking({
+    addBooking({
       bookingNumber: `CTT-2026-${Math.floor(Math.random() * 900 + 100)}`,
       leadId: convertingLead.id,
       primaryContactName: convertingLead.name,

@@ -3,13 +3,8 @@ import {
   Globe,
   RotateCcw,
   Layers,
-  Sparkles,
-  CheckCircle2,
-  Building2,
   Menu,
   X,
-  PanelLeftClose,
-  PanelLeftOpen,
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -32,8 +27,6 @@ export const Header: React.FC<HeaderProps> = ({
 
   const { language, toggleLanguage, t } = useLanguage();
   const [showResetConfirm, setShowResetConfirm] = useState(false);
-
-  const selectedPackage = packages.find(p => p.id === selectedBatchId) || packages[0];
 
   return (
     <header className="h-16 shrink-0 bg-white border-b border-slate-200 text-slate-900 px-4 sm:px-6 flex items-center justify-between gap-3 shadow-[0_2px_10px_rgba(3,87,143,0.04)] z-30 select-none">

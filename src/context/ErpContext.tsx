@@ -27,6 +27,7 @@ import {
   INITIAL_SUB_AGENTS,
   INITIAL_TRANSACTIONS,
   INITIAL_AUDIT_LOGS,
+  INITIAL_WHATSAPP_MESSAGES,
 } from '../utils/mockData';
 import { DEFAULT_EXCHANGE_RATE_SAR_TO_INR } from '../utils/currency';
 

@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
 import {
   Landmark,
-  DollarSign,
   TrendingUp,
   FileText,
   Plus,
-  ArrowUpRight,
-  ArrowDownLeft,
-  Calendar,
-  CreditCard,
-  Building,
   Printer,
-  Sparkles,
-  CheckCircle2,
   X,
-  Edit2,
-  Percent,
+  DollarSign,
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
 import type { FinancialTransaction, TransactionType, Currency } from '../../types';
-import { formatINR, formatSAR, sarToInr, inrToSar } from '../../utils/currency';
+import { formatINR, formatSAR, sarToInr } from '../../utils/currency';
 
 export const MultiCurrencyLedger: React.FC = () => {
   const { transactions, addTransaction, sarExchangeRate, setSarExchangeRate, selectedBatchId, packages, bookings } = useErp();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const [activeTab, setActiveTab] = useState<'ledger' | 'pnl' | 'invoice'>('ledger');
   const [showAddTxnModal, setShowAddTxnModal] = useState(false);
-  const [showInvoiceModal, setShowInvoiceModal] = useState(false);
   const [showRateModal, setShowRateModal] = useState(false);
   const [tempRate, setTempRate] = useState(String(sarExchangeRate));
 

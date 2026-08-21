@@ -12,11 +12,10 @@ import {
 } from 'lucide-react';
 import { useErp } from '../../context/ErpContext';
 import { useLanguage } from '../../context/LanguageContext';
-import type { AuditLog } from '../../types';
 
 export const AuditTrailViewer: React.FC = () => {
   const { auditLogs } = useErp();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [moduleFilter, setModuleFilter] = useState<string>('all');
