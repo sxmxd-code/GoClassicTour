@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-arabic: 'Tajawal', 'Amiri', system-ui, -apple-system, sans-serif;
+    --color-primary: #03578F;
+    --color-primary-dark: #02436e;
+    --color-primary-light: #0A6EA6;
+    --color-gold: #B48C36;
+    --color-gold-light: #D4AF37;
+  }
+
+  html[dir="rtl"] {
+    font-family: var(--font-arabic);
+  }
+
+  html[dir="ltr"] {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: #f6f9fc;
+    color: #0f172a;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Classic Tour & Travels Luxury Card Styles */
+.classic-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 12px rgba(3, 87, 143, 0.04);
+}
+
+.classic-card:hover {
+  box-shadow: 0 4px 20px rgba(3, 87, 143, 0.08);
+}
+
+/* Print Styles for ID Badges, Invoices, and Rooming Lists */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+}
